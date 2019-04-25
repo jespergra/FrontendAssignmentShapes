@@ -297,7 +297,10 @@ CanvasState.prototype.draw = function () {
 				shape.x - shape.w < 0 || shape.y - shape.h < 0) continue;
 			shapes[i].draw(ctx);
 		}
-		drawParalellogram(ctx);
+		if (l == 4) {
+			drawParalellogram(ctx);
+		}
+		
 
 		// draw selection
 		// right now this is just a stroke along the edge of the selected Shape
