@@ -13,8 +13,10 @@
             <div id="text">
                 <h1>About this program</h1>
                 You can click somewhere on the screen to place a red pointer, when you have placed 3 points the fourth one will appear in the color green.
-                The paralellogram and the circle with same area are also drawn.
-                Up in the left corner can you see information like coordinates and the exact area of the shapes.
+                The paralellogram and the circle with same area are also drawn at this moment.
+                Up in the left corner can you see information like coordinates and the area of the shapes. 
+                Click and hold optional red point to move the point. 
+                The program will automatically place the fourth and green point and then redraw the circle and the paralellogram, also the new area and coordinates will be updated accordingly.
                 <br /><br />
                 <h2>Jesper Grandien - The author</h2>
                 Jesper is a web programmer student who loves to code and to challenge himself. Jesper is currently studying the second year at BTH and is applying for the internship position at Tink this summer.
@@ -22,30 +24,7 @@
                 Click somewhere to remove this text.
             </div>
         </div>
-        <canvas id="myCanvas">
-
-        Your browser does not support the HTML5 canvas tag.</canvas>
-
-        <script>
-            var c = document.getElementById("myCanvas");
-            var info = document.getElementById("info");
-            info.innerHTML = "Place 3 pointers to see information here.";
-            c.width = window.innerWidth;
-            c.height = window.innerHeight;
-            var ctx = c.getContext("2d");
-            var count = 0;
-            var shapes = [];
-            var myState = this;
-
-            function on() {
-                document.getElementById("about").style.display = "block";
-            }
-
-            function off() {
-                document.getElementById("about").style.display = "none";
-            }
-
-        </script>
+        <canvas id="myCanvas">Your browser does not support the HTML5 canvas tag.</canvas>
         <script src="main.js"></script>
         <p><strong>Note:</strong> The canvas tag is not supported in Internet 
         Explorer 8 and earlier versions.</p>

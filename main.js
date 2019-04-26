@@ -1,3 +1,20 @@
+var c = document.getElementById("myCanvas");
+var info = document.getElementById("info");
+info.innerHTML = "Place 3 pointers to see information here.";
+c.width = window.innerWidth;
+c.height = window.innerHeight;
+var ctx = c.getContext("2d");
+var count = 0;
+var shapes = [];
+var myState = this;
+
+function on() {
+	document.getElementById("about").style.display = "block";
+}
+
+function off() {
+	document.getElementById("about").style.display = "none";
+}
 // By Simon Sarris
 // www.simonsarris.com
 // my name @gmail.com
@@ -20,16 +37,6 @@ function Shape(x, y, w, h, fill) {
 	this.h = h || 11;
 	this.fill = fill || '#AAAAAA';
 }
-
-// Sorting by X-coordinate
-// function sortFunction(a, b) {
-//     if (a[0] === b[0]) {
-//         return 0;
-//     }
-//     else {
-//         return (a[0] < b[0]) ? -1 : 1;
-//     }
-// }
 
 // Draws this shape to a given context
 Shape.prototype.draw = function (ctx) {
@@ -56,6 +63,7 @@ function drawParalellogram (ctx) {
 		ctx.stroke();
 	}
 
+	// Draw circle and place in middle of the paralellogram
 	var middleX = (shapes[0].x + shapes[2].x) / 2;
 	var middleY = (shapes[1].y + shapes[3].y) / 2;
 	ctx.beginPath();
@@ -72,21 +80,18 @@ function drawParalellogram (ctx) {
 
 	// Area of the parallelogram using determinants
 	var pArea = Math.abs((aX * bY) - (aY * bX));
-
-	console.log("pArea: " + pArea);
 	var radius = Math.sqrt((pArea / Math.PI));
-	console.log("radius: " + radius);
 	var cArea = radius * radius * Math.PI;
-	console.log("circle area: " + cArea);
 	ctx.arc(middleX, middleY, radius, 0, 2 * Math.PI);
 	ctx.strokeStyle = "#FFFF00";
 	ctx.stroke();
 
-	info.innerHTML = "Paralelloram area: " + pArea + "px&sup2;<br />Circle area: " + cArea + "px&sup2;<br />" +
-		"Coords point 1: " + shapes[0].x + ", " + shapes[0].y + "<br />" +
-		"Coords point 2: " + shapes[1].x + ", " + shapes[1].y + "<br />" +
-		"Coords point 3: " + shapes[2].x + ", " + shapes[2].y + "<br />" +
-		"Coords point 4: " + shapes[3].x + ", " + shapes[3].y + "<br />";
+	// Update info box with information
+	info.innerHTML = "Paralelloram area: " + Math.round(pArea) + "px&sup2;<br />Circle area: " + Math.round(cArea) + "px&sup2;<br />" +
+		"Point 1: X:" + Math.round(shapes[0].x) + ", Y:" + Math.round(shapes[0].y) + "<br />" +
+		"Point 2: X:" + Math.round(shapes[1].x) + ", Y:" + Math.round(shapes[1].y) + "<br />" +
+		"Point 3: X:" + Math.round(shapes[2].x) + ", Y:" + Math.round(shapes[2].y) + "<br />" +
+		"Point 4: X:" + Math.round(shapes[3].x) + ", Y:" + Math.round(shapes[3].y) + "<br />";
 
 }
 
@@ -208,7 +213,6 @@ function CanvasState(canvas) {
 				var fourthY = shapes[0].y + shapes[2].y - shapes[1].y;
 				// draw fourth vertex
 				ctx.beginPath();
-				//coordinates.push([fourthX, fourthY]);
 				var highestX = 0;
 				var highestY = 0;
 				var lowestX = 9999;
@@ -227,17 +231,6 @@ function CanvasState(canvas) {
 						lowestY = shape.y;
 					}
 				});
-				var middleCoords = [];
-				shapes.forEach(function (shape) {
-					if (shape.x < highestX && shape.x > lowestX) {
-						middleCoords.push(shape);
-					}
-				});
-				console.log("highestX: " + highestX);
-				console.log("highestY: " + highestY);
-				console.log("lowestX: " + lowestX);
-				console.log("lowestY: " + lowestY);
-				console.log(middleCoords);
 				myState.addShape(new Shape(fourthX, fourthY, 11, 11, '#00FF00'));
 			}
 		}
@@ -283,18 +276,6 @@ CanvasState.prototype.draw = function () {
 		if (l == 4) {
 			drawParalellogram(ctx);
 		}
-		
-
-		// draw selection
-		// right now this is just a stroke along the edge of the selected Shape
-		if (this.selection != null) {
-			ctx.strokeStyle = this.selectionColor;
-			ctx.lineWidth = this.selectionWidth;
-			//var mySel = this.selection;
-			//ctx.strokeRect(mySel.x-5.5,mySel.y-5.5,mySel.w,mySel.h);
-		}
-
-		// ** Add stuff you want drawn on top all the time here **
 
 		this.valid = true;
 	}
