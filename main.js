@@ -9,6 +9,7 @@
 
 // Constructor for Shape objects to hold data for all drawn objects.
 // For now they will just be defined as rectangles.
+var shapes;
 function Shape(x, y, w, h, fill) {
 	// This is a very simple and unsafe constructor. All we're doing is checking if the values exist.
 	// "x || 0" just means "if there is a value for x, use that. Otherwise use 0."
@@ -40,15 +41,15 @@ Shape.prototype.draw = function (ctx) {
 }
 
 function drawParalellogram (ctx) {
-	console.log(coordinates);
+	console.log(shapes);
 	ctx.globalCompositeOperation = 'destination-over';
 	for (i = 0; i < 4; i++) {
 		console.log(i);
-		ctx.moveTo(coordinates[i][0], coordinates[i][1]);
+		ctx.moveTo(shapes[i].x, shapes[i].y);
 		if (i !== 3) {
-			ctx.lineTo(coordinates[i + 1][0], coordinates[i + 1][1]);
+			ctx.lineTo(shapes[i + 1].x, shapes[i + 1].y);
 		} else {
-			ctx.lineTo(coordinates[0][0], coordinates[0][1]);
+			ctx.lineTo(shapes[0].x, shapes[0].y);
 		}
 		ctx.strokeStyle = "#0000FF";
 		ctx.stroke();
@@ -107,12 +108,16 @@ function CanvasState(canvas) {
 	//fixes a problem where double clicking causes text to get selected on the canvas
 	canvas.addEventListener('selectstart', function (e) { e.preventDefault(); return false; }, false);
 	// Up, down, and move are for dragging
+
 	canvas.addEventListener('mousedown', function (e) {
 		var mouse = myState.getMouse(e);
 		var mx = mouse.x;
 		var my = mouse.y;
-		var shapes = myState.shapes;
+		shapes = myState.shapes;
 		var l = shapes.length;
+		console.log("shapes array");
+		console.log(shapes);
+		
 		for (var i = l - 1; i >= 0; i--) {
 			if (shapes[i].contains(mx, my)) {
 				var mySel = shapes[i];
@@ -156,8 +161,8 @@ function CanvasState(canvas) {
 			coordinates.push([mouse.x, mouse.y]);
 			myState.addShape(new Shape(mouse.x, mouse.y, 11, 11, 'red'));
 			if (count == 3) {
-				var fourthX = coordinates[0][0] + coordinates[2][0] - coordinates[1][0];
-				var fourthY = coordinates[0][1] + coordinates[2][1] - coordinates[1][1];
+				var fourthX = shapes[0].x + shapes[2].x - shapes[1].x;
+				var fourthY = shapes[0].y + shapes[2].y - shapes[1].y;
 				// draw fourth vertex
 				ctx.beginPath();
 				coordinates.push([fourthX, fourthY]);
