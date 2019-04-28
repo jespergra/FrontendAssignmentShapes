@@ -1,6 +1,5 @@
 html,
-body, 
-#main {
+body {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -11,7 +10,7 @@ body,
 
 
 #myCanvas {
-  background: grey;
+	background: grey;
 }
 
 #parallelogram {
@@ -34,29 +33,53 @@ button {
     cursor: pointer;
 }
 
+#info {
+	position: absolute; 
+	margin: 10px 10px; 
+	padding: 10px; 
+	display: block; 
+	width: 230px; 
+	min-height: 180px; 
+	background: #d3d3d3;
+}
+
+#reset {
+	position: absolute; 
+	margin: 220px 10px; 
+	width: 80px; 
+	display: block;
+}
+
+#aboutButton {
+	position: absolute; 
+	margin: 220px 100px; 
+	width: 80px; 
+	display: block;
+}
+
 #about {
-    position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
+    position: fixed; 
+    display: none;
+    width: 100%; 
+    height: 100%; 
     top: 0; 
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2; 
+    cursor: pointer; 
     text-align: center;
 
   }
 
   #text{
-    position: absolute;
-    font-family: Calibri, "sans-serif";
-    top: 50%;
-    left: 50%;
-    font-size: 20px;
-    color: white;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
+	position: absolute;
+	font-family: Calibri, "sans-serif";
+	top: 50%;
+	left: 50%;
+	font-size: 20px;
+	color: white;
+	transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
   }

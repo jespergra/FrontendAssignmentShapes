@@ -6,9 +6,9 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div style="position: absolute; margin: 10px 10px; padding: 10px; display: block; width: 230px; min-height: 180px; background: #d3d3d3;" id="info"></div>
-        <button style="position: absolute; margin: 220px 10px; width: 80px; display: block;" id="reset">Reset</button>
-        <button style="position: absolute; margin: 220px 100px; width: 80px; display: block;" id="reset" onclick="on()">About</button>
+        <div id="info"></div>
+        <button id="reset">Reset</button>
+        <button id="aboutButton" onclick="on()">About</button>
         <div id="about" onclick="off()">
             <div id="text">
                 <h1>About this program</h1>
@@ -19,7 +19,8 @@
                 The program will automatically place the fourth and green point and then redraw the circle and the paralellogram, also the new area and coordinates will be updated accordingly.
                 <br /><br />
                 <h2>Jesper Grandien - The author</h2>
-                Jesper is a web programmer student who loves to code and to challenge himself. Jesper is currently studying the second year at BTH and is applying for the internship position at Tink this summer.
+                Jesper is 22 years old and is currently studying the second year at "Web programming" program at Blekinge Institute of Technology (Degree of Bachelor of Science 180hp).
+                Jesper currently have most experience of PHP, JavaScript, MySQL, Python and is developing in JavaScript/Vue.js at daily basis right now. 
                 <br /><br />
                 Click somewhere to remove this text.
             </div>
@@ -28,6 +29,5 @@
         <script src="main.js"></script>
         <p><strong>Note:</strong> The canvas tag is not supported in Internet 
         Explorer 8 and earlier versions.</p>
-
     </body>
 </html>
