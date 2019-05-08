@@ -13,22 +13,6 @@ body {
 	background: grey;
 }
 
-#parallelogram {
-    width: 150px;
-    height: 100px;
-    transform: skew(20deg);
-    background: red;
-  }
-
-
-.point {
-    background: red;
-    border-radius: 100%;
-    width: 11px;
-    height: 11px;
-    position: absolute;
-}
-
 button {
     cursor: pointer;
 }
