@@ -167,24 +167,6 @@ function CanvasState(canvas) {
                 var fourthY = shapes[0].y + shapes[2].y - shapes[1].y;
                 // draw fourth vertex (green point)
                 ctx.beginPath();
-                var highestX = 0;
-                var highestY = 0;
-                var lowestX = 9999;
-                var lowestY = 9999;
-                shapes.forEach(function (shape) {
-                    if (shape.x > highestX) {
-                        highestX = shape.x;
-                    }
-                    if (shape.y > highestY) {
-                        highestY = shape.y;
-                    }
-                    if (shape.x < lowestX) {
-                        lowestX = shape.x;
-                    }
-                    if (shape.y < lowestY) {
-                        lowestY = shape.y;
-                    }
-                });
                 myState.addShape(new Shape(fourthX, fourthY, 11, '#00FF00'));
             }
         }
